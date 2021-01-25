@@ -1,0 +1,19 @@
+#Animation{
+	position: fixed;
+	top: 0px;
+	z-index: -100;
+}
+
+body{
+	background-image: url("https://www.jrpg.org/wp-content/uploads/2015/06/nintendo_video_games_the_legen_1920x1080_wallpaperhi.com_.jpg");
+}
+
+#TextWithOther{
+	color: white;
+	position: fixed;
+	left: 1170px;
+	top: 40px;
+	z-index: 10000;
+	width: 430px;
+	font-size: 16px;
+}

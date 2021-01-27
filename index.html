@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Story</title>
+	<link rel="stylesheet" type="text/css" href="CSS/styles.css">
+	<script type="text/javascript">
+		let down1 = "Sprites/down1.png";
+		let down2 = "Sprites/down2.png";
+		let down3 = "Sprites/down3.png";
+		let down4 = "Sprites/down4.png";
+		let up1 = "Sprites/up1.png";
+		let up2 = "Sprites/up2.png";
+		let up3 = "Sprites/up3.png";
+		let up4 = "Sprites/up4.png";
+		let left1 = "Sprites/left4.png";
+		let left2 = "Sprites/left3.png";
+		let left3 = "Sprites/left2.png";
+		let left4 = "Sprites/left1.png";
+		let right1 = "Sprites/right4.png";
+		let right2 = "Sprites/right3.png";
+		let right3 = "Sprites/right2.png";
+		let right4 = "Sprites/right1.png";
+
+		let nowAnim = 1;
+
+		let name = prompt("Введите ваше имя", "Имя");
+		if(name == null){
+			name = "Игрок";
+		}
+
+		function movePlayer(direct){
+			if(direct == 8){
+				animUp();
+			} else if(direct == 4){
+				animLeft();
+			} else if(direct == 2){
+				animDown();
+			} else if(direct == 6){
+				animRight();
+			}
+		}
+
+		function animUp(){
+			if(nowAnim == 1 || nowAnim == 2 || nowAnim == 3){
+				document.getElementById("Animation").src = up1;
+			} else if(nowAnim == 4 || nowAnim == 5 || nowAnim == 6){
+				document.getElementById("Animation").src = up2;
+			} else if(nowAnim == 7 || nowAnim == 8 || nowAnim == 9){
+				document.getElementById("Animation").src = up3;
+			} else if(nowAnim == 10 || nowAnim == 11 || nowAnim == 12){
+				document.getElementById("Animation").src = up4;
+			}
+			nowAnim++;
+			if (nowAnim == 13){
+				nowAnim = 1;
+			}
+			if(!(posX < 0))posX -= 2;
+			document.getElementById("Animation").style.top = posX + "px";
+		}
+		function animDown(){
+			if(nowAnim == 1 || nowAnim == 2 || nowAnim == 3){
+				document.getElementById("Animation").src = down1;
+			} else if(nowAnim == 4 || nowAnim == 5 || nowAnim == 6){
+				document.getElementById("Animation").src = down2;
+			} else if(nowAnim == 7 || nowAnim == 8 || nowAnim == 9){
+				document.getElementById("Animation").src = down3;
+			} else if(nowAnim == 10 || nowAnim == 11 || nowAnim == 12){
+				document.getElementById("Animation").src = down4;
+			}
+			nowAnim++;
+			if (nowAnim == 13){
+				nowAnim = 1;
+			}
+			if(posX < 896)posX += 2;
+			document.getElementById("Animation").style.top = posX + "px";
+		}
+		function animLeft(){
+			if(nowAnim == 1 || nowAnim == 2 || nowAnim == 3){
+				document.getElementById("Animation").src = left1;
+			} else if(nowAnim == 4 || nowAnim == 5 || nowAnim == 6){
+				document.getElementById("Animation").src = left2;
+			} else if(nowAnim == 7 || nowAnim == 8 || nowAnim == 9){
+				document.getElementById("Animation").src = left3;
+			} else if(nowAnim == 10 || nowAnim == 11 || nowAnim == 12){
+				document.getElementById("Animation").src = left4;
+			}
+			nowAnim++;
+			if (nowAnim == 13){
+				nowAnim = 1;
+			}
+			if(!(posY > -86))posY += 2;
+			document.getElementById("Animation").style.right = posY + "px";
+		}
+		function animRight(){
+			if(nowAnim == 1 || nowAnim == 2 || nowAnim == 3){
+				document.getElementById("Animation").src = right1;
+			} else if(nowAnim == 4 || nowAnim == 5 || nowAnim == 6){
+				document.getElementById("Animation").src = right2;
+			} else if(nowAnim == 7 || nowAnim == 8 || nowAnim == 9){
+				document.getElementById("Animation").src = right3;
+			} else if(nowAnim == 10 || nowAnim == 11 || nowAnim == 12){
+				document.getElementById("Animation").src = right4;
+			}
+			nowAnim++;
+			if (nowAnim == 13){
+				nowAnim = 1;
+			}
+			if(posY >= -1616)posY -= 2;
+			document.getElementById("Animation").style.right = posY + "px";
+		}
+
+		function checkOnHouse(itis){
+ 			if(posX >= 362 && posY <= -200 && posX <= 374 && posY >= -242){
+ 				return "Дом Алисы";
+ 			} else if(posX >= 372 && posY <= -554 && posX <= 434 && posY >= -610){
+ 				return "Колодец";
+ 				if(itis = "yes" && money == 3){
+ 					document.getElementById("TextWithOther").innerHTML = "Вы бросили монетки, ничего не произошло."
+ 				} else if(itis = "yes"){
+ 					document.getElementById("TextWithOther").innerHTML = "У вас не хватает монеток, ещё нужно " + String(3 - money);
+ 				}
+ 			} else if(posX >= 132 && posY <= -674 && posX <= 154 && posY >= -794){
+ 				return "Ратуша";
+ 			} else if(posX >= 132 && posY <= -562 && posX <= 154 && posY >= -610){
+ 				return "Дом Эрни";
+ 			} else if(posX >= 666 && posY <= -1388 && posX <= 678 && posY >= -1434){
+ 				return "Дом Лесника";
+ 			} else if(posX >= 166 && posY <= -186 && posX <= 178 && posY >= -220){
+ 				return "Пещера";
+ 			} else if(posX >= 698 && posY <= -424 && posX <= 718 && posY >= -458){
+ 				return "Дом Греты";
+ 			} else if(posX >= 682 && posY <= -694 && posX <= 702 && posY >= -734){
+ 				return "Дом Дарии";
+ 			} else if(posX >= 662 && posY <= -916 && posX <= 684 && posY >= -952){
+ 				return "Дом почты";
+ 			} else if(posX >= 426 && posY <= -936 && posX <= 446 && posY >= -970){
+ 				return "Дом Боба";
+ 			} else {
+ 				return undefined;
+ 			}
+		}
+
+		document.onkeydown = function(e) {
+            switch (e.keyCode) {
+                case 87:
+                    movePlayer(8);
+                    House(checkOnHouse());
+                    break;
+                case 65:
+                    movePlayer(4);
+                    House(checkOnHouse());
+                    break;
+                case 83:
+                    movePlayer(2);
+                    House(checkOnHouse());
+                    break;
+                case 68:
+                    movePlayer(6);
+                    House(checkOnHouse());
+                    break;
+                case 13:
+                	//getCoord();
+                	House(checkOnHouse());
+                	break;
+                case 69:
+                talk(checkOnHouse("yes"));
+                	break;
+            }
+        };
+
+        function getCoord(){
+        	alert(posX+ " "+ posY);
+        }
+
+        let posX = 0;
+        let posY = -148;
+
+        let nowSubject = "";
+        let yetUse = new Array;
+
+        let money = 0;
+
+        function House(text){
+        	if(text != undefined){
+        	    document.getElementById("Soobshenie").style.right = (posY + 50) + "px";
+        	    document.getElementById("Soobshenie").style.top = (posX - 40) + "px";
+        	    document.getElementById("Soobshenie").style.opacity = "100";
+        	    document.getElementById("Soobshenie").innerHTML = text;
+        	    setTimeout(unShow, 3000);
+        	}
+        }
+
+        function unShow(){
+        	document.getElementById("Soobshenie").style.opacity = "0";
+        }
+
+        function talk(textTalk){
+        	if(textTalk != undefined){
+        	    if(textTalk == "Пещера"){
+
+
+        	    	document.getElementById("ImgTalk").src = "http://untamed.wild-refuge.net/images/rpgxp/international/single/german_m1.png";
+        	    	if(nowSubject == "" && yetUse[0] != 1){
+        	    	 	document.getElementById("TextWithOther").innerHTML = "Привет " + name + ", не можешь ли ты мне сделать одну услугу? Принеси пожалуйста мне фонарь, ты сможешь найти его в доме Лесника.";
+        	    	} else if(nowSubject == "фонарь"){
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо тебе огромное, отнеси это пожалуйста Леснику, и да, чуть не забыл, возьми эту монетку себе в знак благодарности.";
+        	    		money++;
+        	    		nowSubject = "топор";
+        	    		yetUse[0] = 1;
+        	    	} else if(yetUse[0] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Я же просил тебя принести мне фонарь, а не " + nowSubject + ".";
+        	    	} else {
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо тебе за оказанную услугу.";
+        	    	}
+        	    } else if(textTalk == "Дом Лесника"){
+
+
+        	    	document.getElementById("ImgTalk").src = "http://untamed.wild-refuge.net/images/rpgxp/single/obiwan2.png";
+        	    	if(nowSubject == "" && yetUse[1] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Привет, ты пишёл взять фонарь? Сейчас, вот. Не мог ли ты так же взять для меня топор?";
+        	    		nowSubject = "фонарь";
+        	    	} else if(yetUse[1] == 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо тебе за оказанную услугу.";
+        	    	} else if(nowSubject == "топор"){
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо тебе огромное, возьми эту монетку себе в знак благодарности.";
+        	    		money++;
+        	    		nowSubject = "";
+        	    		yetUse[1] = 1;
+        	    	} else if(nowSubject != "топор"){
+        	    		document.getElementById("TextWithOther").innerHTML = "Я же просил тебя принести мне топор.";
+        	    	}
+        	    } else if (textTalk == "Дом Алисы"){
+
+
+        	    	document.getElementById("ImgTalk").src = "http://untamed.wild-refuge.net/images/rpgxp/international/single/german_f2.png";
+        	    	if(nowSubject == "" && yetUse[2] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Привет " + name + ", Можно тебя попросить, принеси мне пожалуйста ягоды, они у Эрни, я буду тебе очень благодарна.";
+        	    	} else if(nowSubject == "ягоды"){
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо тебе за ягоды, возьми себе монетку.";
+        	    		nowSubject = "";
+        	    		yetUse[2] = 1;
+        	    		money++;
+        	    	} else if(yetUse[2] == 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо тебе за оказанную услугу.";
+        	    	} else {
+        	    		document.getElementById("TextWithOther").innerHTML = "Извини, но мне не нужен " + nowSubject + ".";
+        	    	}
+        	    } else if (textTalk = "Ратуша"){
+
+
+        	    	document.getElementById("ImgTalk").src = "http://untamed.wild-refuge.net/images/rpgxp/wedding/single/weddingguy03.png";
+        	    	if(nowSubject == "" && yetUse[2] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Привет, ты пришёл забрать ягоды для Алисы? Вот, держи.";
+        	    		nowSubject = "ягоды";
+        	    	} else if(nowSubject == "ягоды"){
+        	    		document.getElementById("TextWithOther").innerHTML = "Я уже дал тебе ягоды.";
+        	    	} else if(nowSubject != "ягоды" && yetUse[2] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = name + ", извини, но у тебя нет места для ягод.";
+        	    	} else if(yetUse[2] == 1){
+        	    		document.getElementById("TextWithOther").innerHTML = name + ", ты уже отнёс ягоды Алисе.";
+        	    	}
+        	    } else if(textTalk == "Дом Эрни"){
+
+
+        	    	document.getElementById("ImgTalk").src = "http://untamed.wild-refuge.net/images/rpgxp/single/moderngirl04.png";
+        	    	if(nowSubject == "посылка"){
+        	    		document.getElementById("TextWithOther").innerHTML = "Привет " + name + ", не можешь ли ты принести мне посылку с почты, я буду тебе очень благодарна.";
+        	    	} else if (nowSubject == "посылка"){
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо " + name + ", я знала, что на тебя можно положится, возьми монетку в знак благодарности.";
+        	    		money++;
+        	    		yetUse[3] = 1;
+        	    		nowSubject = "";
+        	    	} else if(nowSubject != "посылка" && yetUse[3] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = name + ", мне нужна посылка.";
+        	    	} else {
+        	    		document.getElementById("TextWithOther").innerHTML = "Спасибо за помощь, " + name;
+        	    	}
+        	    } else if(textTalk == "Дом почты"){
+
+
+        	    	if(nowSubject == ""){
+        	    		document.getElementById("TextWithOther").innerHTML = "Ты пришёл забрать посылку для Эрни? Вот держи.";
+        	    	} else if(nowSubject != "посылка" && yetUse[3] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Извини, но ты не можешь взять посылку, ты несёшь слишком много.";
+        	    	} else if(nowSubject == "посылка" && yetUse[3] != 1){
+        	    		document.getElementById("TextWithOther").innerHTML = "Ты уже забрал посылку.";
+        	    	} else {
+        	    		document.getElementById("TextWithOther").innerHTML = name + ", ты уже отнёс посылку.";
+        	    	}
+        	    }
+        	    setTimeout(ClearDialog, 10000);
+        	}
+        }
+
+        function ClearDialog(){
+        	document.getElementById("ImgTalk").src = "";
+        	document.getElementById("TextWithOther").innerHTML = "";
+        }
+
+	</script>
+</head>
+	<body>
+		<span id = "movePlayerSpan">
+			<img style="position: relative; right: -148px; top: 0px;" id = "Animation" src="file:///D:/JavaScript%20Games/RobotSender/Sprites/down1.png" height="35px">
+			<span style="position: relative; right: -148px; top: 0px; color: black; opacity: 0; background-color: white; border: 0px solid white; border-radius: 5px; font-size: 20px;" id="Soobshenie"></span>
+		</span>
+
+		<canvas id="canvas1" style="position: fixed; left: 1100px;" width="1000px" height="1000px"></canvas>
+		<script type="text/javascript">
+			var example = document.getElementById("canvas1"),
+			ctx     = example.getContext('2d');
+			ctx.fillStyle = "#000000";
+			ctx.fillRect(0, 0, 520, 150);
+		</script>
+		<canvas id="canvas2" style="position: fixed; left: 1100px; z-index: 1000;" width="1000px" height="1000px"></canvas>
+		<script type="text/javascript">
+			var example = document.getElementById("canvas2"),
+			ctx     = example.getContext('2d');
+			ctx.fillStyle = "#ffffff";
+			ctx.fillRect(0, 0, 520, 150);
+			ctx.clearRect(10, 10, 500, 130);
+		</script>
+		<img src="" id="ImgTalk" height="70px" style="position: fixed; left: 1120px; top: 40px;">
+		<span id="TextWithOther"></span>
+	</body>
+</html>
